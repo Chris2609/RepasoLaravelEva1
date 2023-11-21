@@ -46,4 +46,42 @@ class OpinionControlador extends Controller
 
         return redirect('verOpiniones');
     }
+
+    public function eliminarOpinion(Request $request){
+        $idEliminar = $request->id;
+
+        Opinion::where('id', $idEliminar)->delete();
+
+        return redirect('verOpiniones');
+    }
+
+
+    public function vistaModificar(Request $request)
+    {
+        // $opiniones = DB::select('select * from opiniones');
+        // $opiniones = Opinion::all();
+
+        // $opiniones = Opinion::where('valoracion', '5')->get();
+        $idModificar = $request->id;
+
+        return view('modificarOpinion', ['idOpinion' => $idModificar]);
+    }
+    public function modificarOpinion(Request $request){
+
+        // $idModificar = 4;
+
+        // Opinion::where('id', $idModificar)->update(['valoracion' => 2, 'descripcion' => "opinion modificada"]);
+
+        $opinion = new Opinion();
+
+        $opinion->id = $request->input('id');
+        $opinion->valoracion = $request->input('valoracion');
+        $opinion->descripcion = $request->input('descripcion');
+
+        Opinion::where('id', $opinion->id)->update(['valoracion' => $opinion->valoracion, 'descripcion' => $opinion->descripcion]);
+
+        return redirect('verOpiniones');
+
+    }
 }
+

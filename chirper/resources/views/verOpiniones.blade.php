@@ -49,6 +49,12 @@
             <td>
                {{ $opinion->descripcion }} 
             </td>
+            <td>
+                <a href="/eliminarOpinion/{{ $opinion->id }}">Eliminar</a>
+            </td>
+            <td>
+                <a href="/modificarOpinion/{{ $opinion->id }}">Modificar</a>
+            </td>
         </tr>
         @endforeach
     </table>

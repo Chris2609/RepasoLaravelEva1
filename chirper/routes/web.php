@@ -35,4 +35,11 @@ Route::get('/insertarOpinion', [OpinionControlador::class, 'vistaInsertarOpinion
 
 Route::post('/insertarOpinion/insertar', [OpinionControlador::class,'insertarOpinion'])->name('insertarOpinion.insertar');
 
+Route::get('/eliminarOpinion/{id}', [OpinionControlador::class, 'eliminarOpinion'])->name('eliminarOpinion');
+
+Route::get('/modificarOpinion/{id}', [OpinionControlador::class, 'vistaModificar'])->name('formularioModificar');
+
+Route::post('/modificarOpinion', [OpinionControlador::class, 'modificarOpinion'])->name('modificarOpinion');
+
+
 require __DIR__.'/auth.php';
